@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карта разговора — Елена Аксянова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFFFFF;
+    --graphite: #34373D;
+    --ink-soft: #625F59;
+    --terra: #A94A32;
+    --wave: #CFC8BF;
+    --lvl1: #F6F4F1;
+    --lvl2: #EDE9E3;
+    --lvl3: #E2DCD4;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #D9D5CF; }
+  body {
+    font-family: "Onest", system-ui, sans-serif;
+    color: var(--graphite);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  @media print { html, body { background: var(--paper); } }
+
+  /* Шапка */
+  .head {
+    position: relative;
+    padding: 14mm 16mm 9mm;
+  }
+  .head .threads {
+    position: absolute;
+    right: -8mm; top: 2mm;
+    width: 78mm; height: 34mm;
+  }
+  .eyebrow {
+    font-size: 8.5pt;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 500;
+  }
+  h1 {
+    font-family: "Literata", Georgia, serif;
+    font-weight: 600;
+    font-size: 30pt;
+    line-height: 1.05;
+    margin-top: 3mm;
+    letter-spacing: -.01em;
+  }
+  .sub {
+    font-family: "Literata", Georgia, serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--ink-soft);
+    margin-top: 1.5mm;
+  }
+  .how {
+    margin-top: 5mm;
+    max-width: 128mm;
+    font-size: 9.5pt;
+    line-height: 1.5;
+  }
+
+  /* Уровни */
+  .levels { flex: 1; display: flex; flex-direction: column; }
+  .level {
+    position: relative;
+    flex: 1;
+    padding: 6mm 16mm 5mm;
+    display: grid;
+    grid-template-columns: 1fr 58mm;
+    column-gap: 9mm;
+  }
+  .level::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: -7mm;
+    height: 8mm;
+    background: inherit;
+    -webkit-mask: var(--edge) no-repeat bottom / 100% 100%;
+    mask: var(--edge) no-repeat bottom / 100% 100%;
+  }
+  .l1 { background: var(--lvl1); --edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 30' preserveAspectRatio='none'%3E%3Cpath d='M0 18 C 140 2 260 30 400 16 S 660 4 800 14 V30 H0Z'/%3E%3C/svg%3E"); }
+  .l2 { background: var(--lvl2); --edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 30' preserveAspectRatio='none'%3E%3Cpath d='M0 12 C 180 28 300 2 460 14 S 700 26 800 10 V30 H0Z'/%3E%3C/svg%3E"); }
+  .l3 { background: var(--lvl3); --edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 30' preserveAspectRatio='none'%3E%3Cpath d='M0 20 C 120 6 300 8 420 20 S 680 28 800 8 V30 H0Z'/%3E%3C/svg%3E"); }
+
+  .tag {
+    font-size: 8.5pt;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--terra);
+  }
+  .tag span { color: var(--ink-soft); font-weight: 500; }
+  .key {
+    font-family: "Literata", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 17pt;
+    line-height: 1.15;
+    margin: 1.5mm 0 3mm;
+  }
+  .qs { list-style: none; font-size: 9.5pt; line-height: 1.45; }
+  .qs li { padding-left: 5mm; position: relative; margin-bottom: 1.3mm; }
+  .qs li::before {
+    content: "";
+    position: absolute; left: 0; top: .62em;
+    width: 2.6mm; height: 1px; background: var(--terra);
+  }
+  .self {
+    margin-top: 2.5mm;
+    font-size: 8.8pt;
+    color: var(--ink-soft);
+  }
+  .self b { font-weight: 600; color: var(--graphite); }
+
+  .notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 1mm;
+  }
+  .notes small {
+    font-size: 7.5pt;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1mm;
+  }
+  .notes i {
+    display: block;
+    height: 8.5mm;
+    border-bottom: 1px dashed #A8A097;
+  }
+
+  /* Подвал */
+  .foot {
+    background: var(--graphite);
+    color: #F3F0EC;
+    padding: 6mm 16mm;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 8mm;
+    align-items: center;
+    position: relative;
+  }
+  .foot::before {
+    content: "";
+    position: absolute; left: 0; right: 0; top: -7mm; height: 8mm;
+    background: var(--graphite);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 30' preserveAspectRatio='none'%3E%3Cpath d='M0 14 C 200 26 340 4 520 16 S 720 22 800 12 V30 H0Z'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 30' preserveAspectRatio='none'%3E%3Cpath d='M0 14 C 200 26 340 4 520 16 S 720 22 800 12 V30 H0Z'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%;
+  }
+  .foot .cta {
+    font-family: "Literata", Georgia, serif;
+    font-size: 12.5pt;
+    line-height: 1.3;
+  }
+  .foot .cta em { color: #E8B6A6; font-style: italic; }
+  .foot .who { margin-top: 2.5mm; font-size: 8.8pt; color: #CFCAC3; line-height: 1.5; }
+  .foot .who b { color: #F3F0EC; font-weight: 500; }
+  .qr {
+    width: 24mm; height: 24mm;
+    background: #FFFFFF;
+    border-radius: 2mm;
+    padding: 1.5mm;
+  }
+  .qr svg { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <header class="head">
+    <svg class="threads" viewBox="0 0 400 160" fill="none" stroke="var(--wave)" stroke-width="1" aria-hidden="true">
+      <path d="M0 40 C 80 10 150 70 230 40 S 360 10 400 30"/>
+      <path d="M0 52 C 80 22 150 82 230 52 S 360 22 400 42"/>
+      <path d="M0 64 C 80 34 150 94 230 64 S 360 34 400 54"/>
+      <path d="M0 76 C 80 46 150 106 230 76 S 360 46 400 66"/>
+      <path d="M0 88 C 80 58 150 118 230 88 S 360 58 400 78"/>
+      <path d="M0 100 C 80 70 150 130 230 100 S 360 70 400 90"/>
+    </svg>
+    <p class="eyebrow">Инструмент диалога</p>
+    <h1>Карта разговора</h1>
+    <p class="sub">Три уровня договорённости</p>
+    <p class="how">Перед важным разговором пройдите по уровням сверху вниз — от того, что нужно решить, к тому, почему вы видите это по-разному. Вдвоём отвечайте по очереди. Если разговор с самим собой — ищите подсказку «С собой».</p>
+  </header>
+
+  <section class="levels">
+    <div class="level l1">
+      <div>
+        <p class="tag">Уровень 1 · <span>Ситуация</span></p>
+        <p class="key">«Что мы решим?»</p>
+        <ul class="qs">
+          <li>Что именно нужно решить? Сформулируйте одной фразой.</li>
+          <li>Какие варианты уже есть — и какие вы ещё не рассматривали?</li>
+          <li>К какому сроку нужно решение и что будет, если не решить ничего?</li>
+        </ul>
+        <p class="self"><b>С собой:</b> какое решение я откладываю — и почему именно сейчас пора?</p>
+      </div>
+      <div class="notes"><small>Заметки</small><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <div class="level l2">
+      <div>
+        <p class="tag">Уровень 2 · <span>Отношения</span></p>
+        <p class="key">«Как мы будем общаться дальше?»</p>
+        <ul class="qs">
+          <li>Что важно сохранить между нами, что бы мы ни решили?</li>
+          <li>Как мы поймём, что разговор пошёл не туда, — и что тогда сделаем?</li>
+          <li>Как через месяц проверим, что договорённость работает?</li>
+        </ul>
+        <p class="self"><b>С собой:</b> как я хочу относиться к себе, пока решаю?</p>
+      </div>
+      <div class="notes"><small>Заметки</small><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <div class="level l3">
+      <div>
+        <p class="tag">Уровень 3 · <span>Понимание</span></p>
+        <p class="key">«Почему мы видим это по-разному?»</p>
+        <ul class="qs">
+          <li>Чего я хочу на самом деле — не «что», а «зачем»?</li>
+          <li>Чего, как мне кажется, хочет другой? Как это проверить?</li>
+          <li>Что стоит за позицией каждого: страх, ценность, прошлый опыт?</li>
+        </ul>
+        <p class="self"><b>С собой:</b> какая часть меня хочет одного, а какая — другого?</p>
+      </div>
+      <div class="notes"><small>Заметки</small><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <p class="cta">Разговор идёт по кругу? <em>Разберём вашу ситуацию</em> на <span style="white-space: nowrap">встрече-знакомстве</span> — 15 минут, бесплатно.</p>
+      <p class="who"><b>Елена Аксянова</b> — медиатор и нейрокоуч · Москва и онлайн<br>Telegram @Elenaross8 · WhatsApp +7 910 434-35-23</p>
+    </div>
+    <div class="qr" id="qr" aria-label="QR-код: написать Елене в Telegram"></div>
+  </footer>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+  try {
+    var q = qrcode(0, 'M');
+    q.addData('https://t.me/Elenaross8');
+    q.make();
+    document.getElementById('qr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+  } catch (e) { /* без QR лист всё равно работает: ссылка написана текстом */ }
+</script>
+</body>
+</html>

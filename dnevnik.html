@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Дневник между сессиями — Елена Аксянова</title>
+  <meta name="description" content="Отмечайте своё состояние между встречами: минута в день. Записи хранятся только на вашем телефоне. Перед сессией — короткая сводка для Елены.">
+
+  <!-- ЧЕРНОВИК: перед публикацией убрать noindex -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FAF8F5">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FAF8F5'/%3E%3Cpath d='M4 8c9 0 12 8 24 8M4 24c9 0 12-8 24-8' fill='none' stroke='%23A94A32' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&family=Onest:wght@300..600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dnevnik.css">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <script src="js/dnevnik.js" defer></script>
+</head>
+<body class="diary-page">
+
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="diary-header">
+  <div class="container diary-header__inner">
+    <a class="brand" href="index.html">Елена Аксянова</a>
+    <a class="btn btn--quiet btn--sm" href="index.html">На сайт</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- Вступление -->
+  <section class="diary-intro">
+    <div class="container diary-narrow">
+      <p class="eyebrow">Для тех, кто работает со&nbsp;мной</p>
+      <h1 class="section-title">Дневник между сессиями</h1>
+      <p class="section-lead">Минута в&nbsp;день: как вы, что было важным, о&nbsp;чём хочется поговорить. Перед встречей нажмите «Сводка к&nbsp;сессии»&nbsp;— и&nbsp;мы начнём не&nbsp;с&nbsp;«ну, как прошла неделя», а&nbsp;сразу с&nbsp;главного.</p>
+      <p class="privacy">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M7 10V7a5 5 0 0 1 10 0v3M5.5 10h13v10h-13z"/></svg>
+        <span>Записи хранятся только в&nbsp;этом браузере на&nbsp;вашем устройстве. Сайт их&nbsp;не&nbsp;видит и&nbsp;никуда не&nbsp;отправляет&nbsp;— я&nbsp;получу только то, что вы&nbsp;сами пришлёте.</span>
+      </p>
+      <p class="storage-warning" id="storage-warning" hidden>Браузер не&nbsp;даёт сохранять записи (например, в&nbsp;режиме инкогнито). Дневник работает, но&nbsp;после закрытия вкладки записи пропадут.</p>
+      <noscript><p class="storage-warning">Для дневника нужен включённый JavaScript.</p></noscript>
+    </div>
+  </section>
+
+  <!-- Запись за день -->
+  <section class="section--sand diary-block" aria-labelledby="entry-title">
+    <div class="container diary-narrow">
+      <div class="diary-block__head">
+        <h2 class="diary-h2" id="entry-title">Как вы сегодня?</h2>
+        <label class="date-field">
+          <span>Дата</span>
+          <input type="date" id="entry-date" required>
+        </label>
+      </div>
+      <p class="entry-status" id="entry-status" aria-live="polite"></p>
+
+      <form class="entry-form" id="entry-form" novalidate>
+        <fieldset class="scale">
+          <legend class="scale__label">Настроение <output class="scale__value" id="out-mood" for="f-mood">5</output></legend>
+          <input type="range" id="f-mood" name="mood" min="1" max="10" step="1" value="5" aria-describedby="hint-mood">
+          <p class="scale__ends" id="hint-mood"><span>1&nbsp;— очень плохо</span><span>10&nbsp;— прекрасно</span></p>
+        </fieldset>
+
+        <fieldset class="scale">
+          <legend class="scale__label">Силы и&nbsp;энергия <output class="scale__value" id="out-energy" for="f-energy">5</output></legend>
+          <input type="range" id="f-energy" name="energy" min="1" max="10" step="1" value="5" aria-describedby="hint-energy">
+          <p class="scale__ends" id="hint-energy"><span>1&nbsp;— без сил</span><span>10&nbsp;— полно сил</span></p>
+        </fieldset>
+
+        <fieldset class="scale">
+          <legend class="scale__label">Напряжение <output class="scale__value" id="out-tension" for="f-tension">5</output></legend>
+          <input type="range" id="f-tension" name="tension" min="1" max="10" step="1" value="5" aria-describedby="hint-tension">
+          <p class="scale__ends" id="hint-tension"><span>1&nbsp;— спокойно</span><span>10&nbsp;— на&nbsp;пределе</span></p>
+        </fieldset>
+
+        <fieldset class="feelings">
+          <legend class="field-label">Что чувствовали? <span class="field-hint">можно несколько</span></legend>
+          <div class="chips" id="feelings"></div>
+        </fieldset>
+
+        <label class="field">
+          <span class="field-label">Что сегодня было важным?</span>
+          <textarea id="f-note" name="note" rows="3" placeholder="Разговор, решение, мысль, которая не&nbsp;отпускает…"></textarea>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Хочу обсудить на&nbsp;сессии</span>
+          <textarea id="f-topic" name="topic" rows="2" placeholder="Если есть&nbsp;— одной фразой"></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button class="btn btn--primary" type="submit" id="save-btn">Сохранить запись</button>
+          <button class="btn btn--quiet btn--sm" type="button" id="delete-btn" hidden>Удалить запись за&nbsp;этот день</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Динамика -->
+  <section class="diary-block" aria-labelledby="chart-title">
+    <div class="container diary-narrow">
+      <div class="diary-block__head">
+        <h2 class="diary-h2" id="chart-title">Как менялось состояние</h2>
+        <div class="segmented" role="group" aria-label="Период">
+          <button type="button" data-range="14" aria-pressed="true">2 недели</button>
+          <button type="button" data-range="30" aria-pressed="false">Месяц</button>
+          <button type="button" data-range="90" aria-pressed="false">3 месяца</button>
+        </div>
+      </div>
+
+      <div class="empty" id="chart-empty">
+        <p>Здесь появится график, когда наберётся хотя&nbsp;бы две записи.</p>
+        <button class="btn btn--ghost btn--sm" type="button" id="demo-btn">Посмотреть на&nbsp;примере</button>
+      </div>
+
+      <div id="chart-wrap" hidden>
+        <ul class="legend" aria-hidden="true">
+          <li><span class="legend__mark legend__mark--mood"></span>Настроение</li>
+          <li><span class="legend__mark legend__mark--energy"></span>Силы</li>
+          <li><span class="legend__mark legend__mark--tension"></span>Напряжение</li>
+        </ul>
+        <div class="chart" id="chart"></div>
+        <dl class="averages" id="averages"></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сводка к сессии -->
+  <section class="section--sand diary-block" aria-labelledby="summary-title">
+    <div class="container diary-narrow">
+      <h2 class="diary-h2" id="summary-title">Сводка к&nbsp;сессии</h2>
+      <p class="diary-text">Соберу записи с&nbsp;прошлой встречи в&nbsp;короткое сообщение. Вы&nbsp;его увидите и&nbsp;сможете поправить до&nbsp;отправки.</p>
+
+      <label class="date-field date-field--wide">
+        <span>Прошлая сессия была</span>
+        <input type="date" id="last-session">
+      </label>
+
+      <label class="field">
+        <span class="sr-only">Текст сводки</span>
+        <textarea class="summary-text" id="summary-text" rows="12"></textarea>
+      </label>
+
+      <div class="form-actions form-actions--wrap">
+        <button class="btn btn--primary" type="button" id="send-tg">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.4 4.2 2.9 11.3c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.8.8s.6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.3-1.5Zm-3.2 3.4-8.6 7.8-.3 3.4-1.5-4.7 10-6.3c.4-.3.8-.1.4-.2Z"/></svg>
+          Скопировать и&nbsp;открыть Telegram
+        </button>
+        <a class="btn btn--ghost" id="send-wa" href="https://wa.me/79104343523" target="_blank" rel="noopener">Отправить в&nbsp;WhatsApp</a>
+        <button class="btn btn--quiet btn--sm" type="button" id="copy-btn">Только скопировать</button>
+      </div>
+      <p class="entry-status" id="summary-status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- Все записи -->
+  <section class="diary-block" aria-labelledby="list-title">
+    <div class="container diary-narrow">
+      <h2 class="diary-h2" id="list-title">Все записи <span class="count" id="count"></span></h2>
+      <ol class="entries" id="entries"></ol>
+      <p class="diary-text muted" id="entries-empty">Пока пусто. Первая запись&nbsp;— в&nbsp;блоке «Как вы сегодня?».</p>
+
+      <details class="data-tools">
+        <summary>Перенос на&nbsp;другой телефон и&nbsp;удаление</summary>
+        <p class="diary-text">Записи живут в&nbsp;этом браузере. Чтобы перенести их&nbsp;или сохранить копию&nbsp;— скачайте файл и&nbsp;загрузите его на&nbsp;другом устройстве.</p>
+        <div class="form-actions form-actions--wrap">
+          <button class="btn btn--ghost btn--sm" type="button" id="export-btn">Скачать копию</button>
+          <label class="btn btn--ghost btn--sm file-btn">
+            Загрузить копию
+            <input type="file" id="import-input" accept="application/json,.json">
+          </label>
+          <button class="btn btn--quiet btn--sm danger" type="button" id="wipe-btn">Удалить все записи</button>
+        </div>
+        <p class="entry-status" id="tools-status" aria-live="polite"></p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p>© 2026 Елена Аксянова</p>
+    <p><a href="https://t.me/Elenaross8" target="_blank" rel="noopener">Написать Елене в&nbsp;Telegram</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
