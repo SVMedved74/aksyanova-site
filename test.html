@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Тест: как вы реагируете на конфликт — Елена Аксянова</title>
+  <meta name="description" content="7 вопросов, 2 минуты. Узнайте, какая реакция включается у вас в споре, и получите три приёма, которые помогут договориться.">
+
+  <!-- ЧЕРНОВИК: перед публикацией убрать noindex -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FAF8F5">
+  <meta property="og:title" content="Как вы реагируете на конфликт? Тест за 2 минуты">
+  <meta property="og:description" content="Наступление, уход, холодный разум или уступчивость — и три приёма для вашего типа.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FAF8F5'/%3E%3Cpath d='M4 8c9 0 12 8 24 8M4 24c9 0 12-8 24-8' fill='none' stroke='%23A94A32' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&family=Onest:wght@300..600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dnevnik.css">
+  <link rel="stylesheet" href="css/test.css">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <script src="js/test.js" defer></script>
+</head>
+<body class="diary-page">
+
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="diary-header">
+  <div class="container diary-header__inner">
+    <a class="brand" href="index.html">Елена Аксянова</a>
+    <a class="btn btn--quiet btn--sm" href="index.html">На сайт</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- Старт -->
+  <section class="diary-intro quiz-screen" id="screen-start">
+    <div class="container diary-narrow">
+      <p class="eyebrow">Тест · 7 вопросов · 2 минуты</p>
+      <h1 class="section-title">Как вы реагируете на&nbsp;конфликт?</h1>
+      <p class="section-lead">Когда разговор становится напряжённым, у&nbsp;каждого включается своя привычная защита: кто-то наступает, кто-то уходит, кто-то прячется за&nbsp;логику, кто-то уступает. Узнайте свою&nbsp;— и&nbsp;получите три приёма, которые помогут в&nbsp;следующий раз договориться.</p>
+      <ul class="types-preview" aria-label="Четыре типа реакции">
+        <li><span class="type-dot type-dot--attack"></span>Наступление</li>
+        <li><span class="type-dot type-dot--retreat"></span>Уход</li>
+        <li><span class="type-dot type-dot--logic"></span>Холодный разум</li>
+        <li><span class="type-dot type-dot--yield"></span>Уступчивость</li>
+      </ul>
+      <button class="btn btn--primary" type="button" id="start-btn">Начать тест</button>
+      <p class="quiz-note">Ответы никуда не&nbsp;отправляются. Отвечайте, как обычно бывает, а&nbsp;не&nbsp;как «правильно».</p>
+      <noscript><p class="storage-warning">Для теста нужен включённый JavaScript.</p></noscript>
+    </div>
+  </section>
+
+  <!-- Вопрос -->
+  <section class="diary-intro quiz-screen" id="screen-question" hidden>
+    <div class="container diary-narrow">
+      <div class="progress" aria-hidden="true"><span class="progress__bar" id="progress-bar"></span></div>
+      <p class="eyebrow" id="q-counter">Вопрос 1 из 7</p>
+      <fieldset class="question">
+        <legend class="question__title" id="q-title" tabindex="-1"></legend>
+        <div class="answers" id="answers"></div>
+      </fieldset>
+      <button class="btn btn--quiet btn--sm" type="button" id="back-btn">← Назад</button>
+    </div>
+  </section>
+
+  <!-- Результат -->
+  <section class="diary-intro quiz-screen" id="screen-result" hidden>
+    <div class="container diary-narrow">
+      <p class="eyebrow">Ваш результат</p>
+      <h1 class="section-title result__title" id="r-title" tabindex="-1"></h1>
+      <p class="result__second" id="r-second" hidden></p>
+
+      <div class="result__bars" id="r-bars"></div>
+
+      <p class="section-lead" id="r-what"></p>
+
+      <div class="result__cols">
+        <div>
+          <h2 class="result__h">Ваша сила</h2>
+          <p id="r-strength"></p>
+        </div>
+        <div>
+          <h2 class="result__h">Чем это обходится</h2>
+          <p id="r-cost"></p>
+        </div>
+      </div>
+
+      <h2 class="result__h">Три приёма на&nbsp;следующий разговор</h2>
+      <ol class="tips" id="r-tips"></ol>
+
+      <div class="result__cta">
+        <h2 class="diary-h2">Разобрать свой случай</h2>
+        <p class="diary-text" id="r-help"></p>
+        <p class="diary-text">Бесплатная встреча-знакомство 15&nbsp;минут: расскажете ситуацию, а&nbsp;я&nbsp;скажу, чем могу помочь.</p>
+        <div class="form-actions form-actions--wrap">
+          <a class="btn btn--primary" id="cta-tg" href="https://t.me/Elenaross8" target="_blank" rel="noopener">Обсудить результат в&nbsp;Telegram</a>
+          <a class="btn btn--ghost" id="cta-wa" href="https://wa.me/79104343523" target="_blank" rel="noopener">В&nbsp;WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="result__more">
+        <p>Больше приёмов для трудных разговоров&nbsp;— в&nbsp;моём Telegram-канале. Там&nbsp;же в&nbsp;подарок «Карта разговора».</p>
+        <a class="btn btn--ghost btn--sm" href="#" data-todo-link>Подписаться на&nbsp;канал</a>
+        <span class="draft-note"><span class="badge-todo">заглушка</span> ссылка на&nbsp;канал</span>
+      </div>
+
+      <div class="form-actions form-actions--wrap">
+        <button class="btn btn--quiet btn--sm" type="button" id="share-btn">Поделиться тестом</button>
+        <button class="btn btn--quiet btn--sm" type="button" id="restart-btn">Пройти заново</button>
+      </div>
+      <p class="entry-status" id="share-status" aria-live="polite"></p>
+
+      <p class="quiz-note">Это не&nbsp;психологическая диагностика, а&nbsp;повод присмотреться к&nbsp;себе. В&nbsp;разных ситуациях мы&nbsp;реагируем по-разному, и&nbsp;любую реакцию можно изменить.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p>© 2026 Елена Аксянова</p>
+    <p><a href="dnevnik.html">Дневник между сессиями</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
