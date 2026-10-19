@@ -1491,3 +1491,4 @@ main:focus { outline: none; }
 .chip__title { font-weight: 500; }
 .chip__sub { font-size: .8125rem; color: var(--ink-soft); }
 @media (prefers-reduced-motion: reduce) { .chip { transition: none; } .chip:hover { transform: none; } }
+.define__simple + .define__simple { margin-top: .7em; }
