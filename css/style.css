@@ -1426,3 +1426,68 @@ main:focus { outline: none; }
 .process__diary a { color: var(--terracotta-deep); font-weight: 500; }
 .gift__text p.gift__test { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line-strong); }
 .gift__test a { color: var(--terracotta-deep); font-weight: 500; }
+
+/* ---------- 1а. Что такое медиация и коучинг ---------- */
+
+.define__grid { display: grid; gap: 40px; }
+@media (min-width: 760px) {
+  .define__grid { grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 88px); }
+}
+.define__item { max-width: 34em; }
+.define__name {
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);
+  font-weight: 380;
+  line-height: 1.15;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.define__label {
+  margin-top: 22px;
+  font-size: .8125rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.define__pro { margin-top: 6px; color: var(--ink-soft); }
+.define__simple {
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  font-weight: 350;
+  line-height: 1.5;
+}
+.define__item .draft-note { margin-top: 16px; }
+
+/* ---------- Кнопки-запросы «Договориться с собой» ---------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--graphite);
+  text-decoration: none;
+  line-height: 1.3;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.chip:hover {
+  border-color: var(--terracotta);
+  background: var(--linen-soft);
+  transform: translateY(-1px);
+}
+.chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.chip__title { font-weight: 500; }
+.chip__sub { font-size: .8125rem; color: var(--ink-soft); }
+@media (prefers-reduced-motion: reduce) { .chip { transition: none; } .chip:hover { transform: none; } }
