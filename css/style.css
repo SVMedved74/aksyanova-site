@@ -1492,3 +1492,128 @@ main:focus { outline: none; }
 .chip__sub { font-size: .8125rem; color: var(--ink-soft); }
 @media (prefers-reduced-motion: reduce) { .chip { transition: none; } .chip:hover { transform: none; } }
 .define__simple + .define__simple { margin-top: .7em; }
+
+/* ---------- Вариант 2: тексты из презентации ---------- */
+
+.variant-switch { margin-left: 16px; white-space: nowrap; }
+.variant-switch a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+.hero__values {
+  margin-top: 14px;
+  font-size: .8125rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.define__coach {
+  max-width: 46em;
+  margin-top: clamp(48px, 6vw, 72px);
+}
+.define__coach .define__simple { margin-top: 18px; }
+.define__item .define__name + p { margin-top: 18px; }
+
+.need-list {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+@media (min-width: 900px) { .need-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
+.need-item {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.need-item__num {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--graphite);
+  color: var(--paper);
+  font-weight: 500;
+}
+.need-item__title { margin-top: 20px; font-size: 1.375rem; font-weight: 420; line-height: 1.2; }
+.need-item p { margin-top: 12px; color: var(--ink-soft); }
+
+.trust__grid { display: grid; gap: 24px; }
+@media (min-width: 860px) { .trust__grid { grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; } }
+.trust__col { padding: clamp(4px, 1vw, 8px) 0; }
+.trust__col p { margin-top: 14px; color: var(--ink-soft); }
+.trust__name { font-size: 1.375rem; font-weight: 420; }
+.trust__col--plate {
+  padding: clamp(28px, 4vw, 40px);
+  background: var(--graphite);
+  border-radius: var(--radius);
+  color: var(--paper);
+}
+.trust__col--plate p { color: var(--on-dark-soft); }
+
+.levels__lead { margin-top: 12px; max-width: 26em; color: var(--ink-soft); }
+.level__desc { margin-top: 6px; color: var(--ink-soft); }
+.level__desc + .level__q { margin-top: 8px; font-size: clamp(1.1875rem, 1rem + .6vw, 1.375rem); }
+
+.role__grid { display: grid; }
+@media (min-width: 1024px) {
+  .role__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 64px; align-items: center; }
+  .role .section-head { margin-bottom: 0; }
+}
+.role-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-strong); }
+.role-list li {
+  position: relative;
+  padding: 18px 0 18px 34px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  font-weight: 380;
+}
+.role-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(18px + .7em);
+  width: 18px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.manifest { background: var(--graphite); color: var(--paper); }
+.manifest__quote { margin: 0; max-width: 40em; }
+.manifest__lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+  font-weight: 330;
+  line-height: 1.2;
+}
+.manifest__more { margin-top: 20px; color: var(--on-dark-soft); font-size: 1.0625rem; }
+.manifest__nums {
+  display: grid;
+  gap: 28px;
+  margin: clamp(48px, 7vw, 80px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 760px) { .manifest__nums { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+.manifest__nums li {
+  display: grid;
+  gap: 6px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(250, 248, 245, .22);
+}
+.manifest__num {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 2.2rem + 2vw, 3.75rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--terracotta-light);
+}
+.manifest__label { font-weight: 500; }
+.manifest__text { color: var(--on-dark-soft); font-size: .9375rem; }
+.facts__plus { font-family: var(--font-sans); font-weight: 300; }
+@media (max-width: 719.98px) { .compare-table tbody th { width: auto; } }
