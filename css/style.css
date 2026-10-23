@@ -1617,3 +1617,58 @@ main:focus { outline: none; }
 .manifest__text { color: var(--on-dark-soft); font-size: .9375rem; }
 .facts__plus { font-family: var(--font-sans); font-weight: 300; }
 @media (max-width: 719.98px) { .compare-table tbody th { width: auto; } }
+
+/* ---------- Вариант 2: весёлые кнопки «Договориться с собой» ---------- */
+
+.direction__hint { margin-top: 12px; font-family: var(--font-serif); font-style: italic; color: var(--terracotta-deep); }
+
+.fun {
+  margin-top: clamp(28px, 4vw, 40px);
+  padding: clamp(28px, 5vw, 56px);
+  background: var(--linen);
+  border-radius: 28px;
+}
+.fun__head { max-width: 40em; }
+.fun__title {
+  font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem);
+  font-weight: 380;
+  line-height: 1.15;
+}
+.fun__title em { color: var(--terracotta-deep); }
+.fun__lead { margin-top: 10px; color: var(--ink-soft); }
+
+.fun__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.fun__chips .chip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: center;
+  padding: 12px 20px 13px 14px;
+  border: 0;
+  box-shadow: 0 2px 0 rgba(58, 61, 68, .12);
+  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .25s ease, background-color .2s ease;
+}
+.fun__chips .chip__emoji { grid-row: span 2; font-size: 1.6rem; line-height: 1; }
+.fun__chips li:nth-child(7n+1) .chip { background: #FFF4EC; transform: rotate(-1.5deg); }
+.fun__chips li:nth-child(7n+2) .chip { background: #FFFBEA; transform: rotate(1deg); }
+.fun__chips li:nth-child(7n+3) .chip { background: #EEF4F1; transform: rotate(-.8deg); }
+.fun__chips li:nth-child(7n+4) .chip { background: #FFF1F0; transform: rotate(1.4deg); }
+.fun__chips li:nth-child(7n+5) .chip { background: #F5EFFA; transform: rotate(-1.2deg); }
+.fun__chips li:nth-child(7n+6) .chip { background: #FCEFF4; transform: rotate(.9deg); }
+.fun__chips li:nth-child(7n+7) .chip { background: #F1F6E9; transform: rotate(-1deg); }
+.fun__chips .chip:hover,
+.fun__chips .chip:focus-visible {
+  transform: rotate(0) translateY(-4px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(58, 61, 68, .16);
+}
+.fun__chips .chip:active { transform: scale(.97); }
+@media (prefers-reduced-motion: reduce) {
+  .fun__chips .chip, .fun__chips .chip:hover { transition: none; transform: none !important; }
+}
